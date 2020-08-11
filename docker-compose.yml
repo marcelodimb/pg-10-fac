@@ -1,0 +1,32 @@
+version: '3'
+services:
+  db:
+    image: postgres:12.0-alpine
+    container_name: "postgres_pg_10_fac"
+    environment:
+      - POSTGRES_DB=postgres_pg_10_fac
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - "15432:5432"
+  web:
+    container_name: "django_pg_10_fac"
+    build: .
+    command: >
+      sh -c "python manage.py migrate &&
+             python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/web
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+    environment:
+      - SECRET_KEY=-7uuk3ksy$$*3znfru9pf-m-cxdq+xrgx0*zhyk3u+te-$$zgy
+      - DEBUG=True
+      - ALLOWED_HOSTS=127.0.0.1,localhost
+      - DB_HOST=db
+      - DB_NAME=postgres_pg_10_fac
+      - DB_USER=postgres
+      - DB_PASS=postgres
+      - DB_PORT=5432

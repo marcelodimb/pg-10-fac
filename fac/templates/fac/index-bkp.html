@@ -1,0 +1,416 @@
+{% load staticfiles %}
+{% load fac_tags %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+    <meta http-equiv="pragma" content="no-cache">
+
+    <!-- JQuery-->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static 'fac/vendor/bootstrap/4.3.1/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fac/vendor/bootstrap/4.3.1/css/bootstrap-grid.min.css' %}">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet">
+
+    <!-- Main -->
+    <link href="{% static 'fac/css/main.css' %}" rel="stylesheet">
+
+    <!-- Title page -->
+    <title>Procuradoria Trabalhista - PG-10 | Formulário de Análise Contábil - Anexo VIII</title>
+</head>
+<body>
+    <header>
+        <div class="text-center">
+            <div class="row no-gutters">
+                <div class="col">
+                    <img class="logo-img" src="{% static 'fac/img/brasao-estado-rio-de-janeiro.png' %}" alt="Procuradoria Trabalhista - PG-10 | Formulário de Análise Contábil - Anexo VIII">
+                </div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col">
+                    <p class="logo-desc">Procuradoria Trabalhista - PG-10</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            {% if messages %}
+                {% for message in messages %}
+                    <div>{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+            <div class="row no-gutters">
+                <div class="col text-center">
+                    <h1 class="title-form">FORMULÁRIO DE ANÁLISE CONTÁBIL - ANEXO VIII</h1>
+                </div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col">
+                    <form method="post">
+                        {% csrf_token %}
+                        <fieldset>
+                            <div class="form-group">
+                                {{ form.num_processo_adm.label_tag }}
+                                {{ form.num_processo_adm.errors }}
+                                {{ form.num_processo_adm }}
+                            </div>
+                            <div class="form-group">
+                                <label>Analisar: cálculos de fls.</label>
+                                {{ form.calculos_fls_pa|add_class:"small-integer-field" }}
+                                {{ form.calculos_fls_pa.errors }}
+                                {{ form.calculos_fls_pa.label_tag }}
+                                <label>ou fls.</label>
+                                {{ form.calculos_fls_judicial|add_class:"small-integer-field" }}
+                                {{ form.calculos_fls_judicial.errors }}
+                                {{ form.calculos_fls_judicial.label_tag }}
+                                {{ form.processo_eletronico|add_class:"ml-4" }}
+                                {{ form.processo_eletronico.label_tag }}
+                            </div>
+                            <div class="form-group mb-0">
+                                {{ form.prazo_maximo_devolucao.label_tag }}
+                                {{ form.prazo_maximo_devolucao.errors }}
+                                {{ form.prazo_maximo_devolucao|add_class:"small-integer-field mr-1" }}
+                            </div>
+                            <div class="form-group mb-0">
+                                {{ form.data_preenchimento.label_tag }}
+                                {{ form.data_preenchimento|add_class:"small-integer-field mr-1" }}
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="row">
+                                <div class="col"><h2 class="section-title">1) Composição do principal a apurar:</h2></div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col">
+                                    <div class="form-group">
+                                        {{ form.comp_princ_ap_salario_devido }}
+                                        {{ form.comp_princ_ap_salario_devido.label_tag }}
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        {{ form.comp_princ_ap_dec_terc_salario }}
+                                        {{ form.comp_princ_ap_dec_terc_salario.label_tag }}
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        {{ form.comp_princ_ap_adicional_proj_especial }}
+                                        {{ form.comp_princ_ap_adicional_proj_especial.label_tag }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col">
+                                    <div class="form-group">
+                                        {{ form.comp_princ_ap_diferenca_salarial }}
+                                        {{ form.comp_princ_ap_diferenca_salarial.label_tag }}
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        {{ form.comp_princ_ap_ferias_1_3 }}
+                                        {{ form.comp_princ_ap_ferias_1_3.label_tag }}
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        {{ form.comp_princ_ap_pcs_2000_2001 }}
+                                        {{ form.comp_princ_ap_pcs_2000_2001.label_tag }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col">
+                                    <div class="form-group">
+                                        {{ form.comp_princ_ap_reflexo_salarial }}
+                                        {{ form.comp_princ_ap_reflexo_salarial.label_tag }}
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        {{ form.comp_princ_ap_aviso_previo }}
+                                        {{ form.comp_princ_ap_aviso_previo.label_tag }}
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        {{ form.comp_princ_ap_equiparacao_salarial }}
+                                        {{ form.comp_princ_ap_equiparacao_salarial.label_tag }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col">
+                                    <div class="form-group">
+                                        {{ form.comp_princ_ap_horas_extras }}
+                                        {{ form.comp_princ_ap_horas_extras.label_tag }}
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        {{ form.comp_princ_ap_multa_art_477_clt }}
+                                        {{ form.comp_princ_ap_multa_art_477_clt.label_tag }}
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        {{ form.comp_princ_ap_premio_maquinista }}
+                                        {{ form.comp_princ_ap_premio_maquinista.label_tag }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col">
+                                    <div class="form-group">
+                                        {{ form.comp_princ_ap_horas_noturnas }}
+                                        {{ form.comp_princ_ap_horas_noturnas.label_tag }}
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        {{ form.comp_princ_ap_multa_art_467_clt }}
+                                        {{ form.comp_princ_ap_multa_art_467_clt.label_tag }}
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        {{ form.comp_princ_ap_passivo_trabalhista }}
+                                        {{ form.comp_princ_ap_passivo_trabalhista.label_tag }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col">
+                                    <div class="form-group">
+                                        {{ form.comp_princ_ap_adicionais_ins_per }}
+                                        {{ form.comp_princ_ap_adicionais_ins_per.label_tag }}
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        {{ form.comp_princ_ap_vale_transporte }}
+                                        {{ form.comp_princ_ap_vale_transporte.label_tag }}
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        {{ form.comp_princ_ap_pcs_1990 }}
+                                        {{ form.comp_princ_ap_pcs_1990.label_tag }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col">
+                                    <div class="form-group">
+                                        {{ form.comp_princ_ap_fgts }}
+                                        {{ form.comp_princ_ap_fgts.label_tag }}
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group">
+                                        {{ form.comp_princ_ap_vale_refeicão }}
+                                        {{ form.comp_princ_ap_vale_refeicão.label_tag }}
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="form-group height-col-field">
+                                        <input type="checkbox" data-type='checkbox-outros' name="checkbox_comp_princ_ap_outros" id="id_checkbox_comp_princ_ap_outros">
+                                        {{ form.comp_princ_ap_outros.label_tag }}
+                                        {{ form.comp_princ_ap_outros }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col-4">
+                                    <div class="form-group mb-0">
+                                        {{ form.comp_princ_ap_multa_40_perc_fgts }}
+                                        {{ form.comp_princ_ap_multa_40_perc_fgts.label_tag }}
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group mb-0">
+                                        {{ form.comp_princ_ap_licencas_mat_pat_outras }}
+                                        {{ form.comp_princ_ap_licencas_mat_pat_outras.label_tag }}
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="row">
+                                <div class="col"><h2 class="section-title">2) Indicação das fls. contendo as decisões processuais:</h2></div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col-4">
+                                    <div class="form-group mb-0">
+                                        {{ form.fls_decisoes_1_grau_sentenca.label_tag }}
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group mb-0">
+                                        {{ form.fls_decisoes_1_grau_sentenca.erros }}
+                                        {{ form.fls_decisoes_1_grau_sentenca }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col-4">
+                                    <div class="form-group mb-0">
+                                        {{ form.fls_decisao_1_grau_embargos.label_tag }}
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group mb-0">
+                                        {{ form.fls_decisao_1_grau_embargos.erros }}
+                                        {{ form.fls_decisao_1_grau_embargos }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col-4">
+                                    <div class="form-group mb-0">
+                                        {{ form.fls_decisoes_2_grau_acordaos.label_tag }}
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group mb-0">
+                                        {{ form.fls_decisoes_2_grau_acordaos.erros }}
+                                        {{ form.fls_decisoes_2_grau_acordaos }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col-4">
+                                    <div class="form-group mb-0">
+                                        {{ form.fls_decisao_2_grau_embargos.label_tag }}
+                                    </div>
+                                </div>
+                                <div class="col-4">
+                                    <div class="form-group mb-0">
+                                        {{ form.fls_decisao_2_grau_embargos.erros }}
+                                        {{ form.fls_decisao_2_grau_embargos }}
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="row">
+                                <div class="col"><h2 class="section-title">3) Período da execução:</h2></div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col">
+                                    <div class="form-group mb-0">
+                                        {{ form.periodo_execucao }}
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="row">
+                                <div class="col"><h2 class="section-title">4) Correção Monetária:</h2></div>
+                            </div>
+                            <div class="row">
+                                <div class="col"><h2 class="section-title">4.1) Indique o(s) Indexador(es):</h2></div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col">
+                                    <div class="form-group mb-0">
+                                        {{ form.correcao_monetaria_indexadores.errors }}
+                                        {{ form.correcao_monetaria_indexadores }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col"><h2 class="section-title">4.2) A partir:</h2></div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col">
+                                    <div class="form-group mb-0">
+                                        {{ form.correcao_monetaria_a_partir.errors }}
+                                        {{ form.correcao_monetaria_a_partir }}
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <div class="row">
+                                <div class="col"><h2 class="section-title">5) Juros de mora:</h2></div>
+                            </div>
+                            <div class="row">
+                                <div class="col"><h2 class="section-title">5.1) Porcentagem e/ou Orientação Legal:</h2></div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col">
+                                    <div class="form-group mb-0">
+                                        {{ form.juros_mora_porcentagem.errors }}
+                                        {{ form.juros_mora_porcentagem }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col"><h2 class="section-title">5.2) A partir:</h2></div>
+                            </div>
+                            <div class="row no-gutters">
+                                <div class="col">
+                                    <div class="form-group mb-0">
+                                        {{ form.juros_mora_a_partir.errors }}
+                                        {{ form.juros_mora_a_partir }}
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <fieldset>
+                            <h2 class="section-title">6) Observações ou orientações complementares:</h2>
+                            <div class="row no-gutters">
+                                <div class="col">
+                                    <div class="form-group mb-0">
+                                        {{ form.observacoes_orientacoes_complementares.errors }}
+                                        {{ form.observacoes_orientacoes_complementares }}
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <div class="row no-gutters">
+                            <div class="col text-right">
+                                <button type="submit" class="btn btn-primary">Gerar PDF</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container text-center">
+            <div class="row no-gutters">
+                <div class="col">
+                    <p class="footer-desc">{% now "Y" %} – Procuradoria Trabalhista - PG-10</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JQuery -->
+    <script src="{% static 'fac/vendor/jquery/3.4.1/jquery.min.js' %}"></script>
+    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+
+    <!-- Bootstrap -->
+    <script src="{% static 'fac/vendor/bootstrap/4.3.1/js/bootstrap.bundle.min.js' %}"></script>
+
+    <!-- JQuery init -->
+    <script src="{% static 'fac/js/jquery.init.js' %}"></script>
+
+    <!-- Dynamic functions -->
+    <script src="{% static 'fac/js/main.js' %}"></script>
+</body>
+</html>

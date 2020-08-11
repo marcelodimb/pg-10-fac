@@ -1,0 +1,118 @@
+<html>
+<head>
+    <title>FORMULÁRIO DE ANÁLISE CONTÁBIL - Anexo VIII</title>
+    <meta charset="utf-8">
+    <style type="text/css">
+        *, ::after, ::before {
+            box-sizing: border-box;
+        }
+        body {
+            font-size: 1rem;
+        }
+        img {
+            vertical-align: middle;
+            border-style: none;
+        }
+        p {
+            margin-bottom: .375rem;
+            margin-top: 0;
+        }
+        .text-center {
+            text-align: center !important;
+        }
+        .row {
+            display: -ms-flexbox;
+            display: flex;
+            -ms-flex-wrap: wrap;
+            flex-wrap: wrap;
+            margin-right: -15px;
+            margin-left: -15px;
+        }
+        .no-gutters {
+            margin-right: 0;
+            margin-left: 0;
+        }
+        .col, .col-4 {
+            position: relative;
+            width: 100%;
+            padding-right: 15px;
+            padding-left: 15px;
+        }
+        .col {
+            -ms-flex-preferred-size: 0;
+            flex-basis: 0;
+            -ms-flex-positive: 1;
+            flex-grow: 1;
+            max-width: 100%;
+        }
+        .no-gutters > .col {
+            padding-right: 0;
+            padding-left: 0;
+        }
+        .mt-2 {
+            margin-top: .5rem;
+        }
+        .logo-img {
+            width: 70px;
+        }
+        .logo-desc {
+            font-size: 1.375rem;
+            font-weight: bold;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="text-center">
+            <div class="row no-gutters">
+                <div class="col">
+                    <img class="logo-img" src="{{ http_origin }}/static/fac/img/brasao-estado-rio-de-janeiro.png" alt="Procuradoria Trabalhista - PG-10 | Formulário de Análise Contábil - Anexo VIII">
+                </div>
+            </div>
+            <div class="row no-gutters">
+                <div class="col">
+                    <p class="logo-desc mt-2">Procuradoria Trabalhista - PG-10</p>
+                    <p class="logo-desc">FORMULÁRIO DE ANÁLISE CONTÁBIL - Anexo VIII</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <br>
+    <main>
+        <div class="row no-gutters">
+            <div class="col">
+                <p>Para: Assessoria de Cálculos e Perícias Contábeis - ACPC</p>
+            </div>
+        </div>
+        <div class="row no-gutters">
+            <div class="col">
+                <p>PROCESSO ADM N.º: {{ num_processo_adm }}</p>
+            </div>
+        </div>
+        <div class="row no-gutters">
+            <div class="col">
+                <p>
+                    Analisar: cálculos de fls.: {{ calculos_fls_pa }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>do PA ou fls. {{ calculos_fls_judicial }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>do Judicial</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>{% if processo_eletronico is True %}( X ){% else %}(&nbsp;&nbsp;){% endif %} Processo Eletrônico.</span>
+                </p>
+            </div>
+        </div>
+        <div class="row no-gutters">
+            <div class="col">
+                <p>Prazo máximo para devolução: {{ prazo_maximo_devolucao }}</p>
+            </div>
+        </div>
+        <div class="row no-gutters">
+            <div class="col">
+                <p>
+                    Em: {{ data_preenchimento }}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <span>Assinatura e carimbo do Solicitante:________________________________________________________</span>
+                </p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
